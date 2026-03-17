@@ -1,15 +1,18 @@
 /* ═══════════════════════════════════════════════════════
-   OAKWELL WORKFORCE — MAIN JS v2.0
+   OAKWELL WORKFORCE — MAIN JS v2.1
    ═══════════════════════════════════════════════════════ */
 
 function oakwellInit() {
+
   // Nav scroll effect
   const nav = document.getElementById('main-nav');
-  window.addEventListener('scroll', () => {
-    nav?.classList.toggle('scrolled', window.scrollY > 40);
-  }, { passive: true });
+  if (nav) {
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 40);
+    }, { passive: true });
+  }
 
-  // Active nav link
+  // Active nav link highlight
   const path = window.location.pathname;
   document.querySelectorAll('.nav-links a, .mobile-menu a').forEach(a => {
     const href = a.getAttribute('href') || '';
@@ -18,19 +21,22 @@ function oakwellInit() {
     }
   });
 
-  // Hamburger
+  // Hamburger menu toggle
   const hamburger = document.querySelector('.hamburger');
   const mobileMenu = document.querySelector('.mobile-menu');
-  hamburger?.addEventListener('click', () => {
-    hamburger.classList.toggle('open');
-    mobileMenu?.classList.toggle('open');
-  });
-  mobileMenu?.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', () => {
-      hamburger?.classList.remove('open');
-      mobileMenu?.classList.remove('open');
+
+  if (hamburger && mobileMenu) {
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
     });
-  });
+    mobileMenu.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        mobileMenu.classList.remove('open');
+      });
+    });
+  }
 
   // Cookie banner
   const cookieBanner = document.getElementById('cookie-banner');
@@ -46,7 +52,7 @@ function oakwellInit() {
     cookieBanner?.classList.remove('visible');
   });
 
-  // Scroll reveal
+  // Scroll reveal animations
   const reveals = document.querySelectorAll('.reveal');
   if (reveals.length) {
     const obs = new IntersectionObserver((entries) => {
@@ -66,12 +72,15 @@ function oakwellInit() {
       const target = document.querySelector(a.getAttribute('href'));
       if (target) {
         e.preventDefault();
-        window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - 80, behavior: 'smooth' });
+        window.scrollTo({
+          top: target.getBoundingClientRect().top + window.scrollY - 80,
+          behavior: 'smooth'
+        });
       }
     });
   });
 
-  // Netlify form AJAX submission
+  // Netlify form AJAX submission with success/error feedback
   document.querySelectorAll('form[data-netlify]').forEach(form => {
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
@@ -79,7 +88,9 @@ function oakwellInit() {
       const successEl = form.querySelector('.form-success');
       const errorEl = form.querySelector('.alert--error');
       const originalText = btn?.textContent;
+
       if (btn) { btn.textContent = 'Sending...'; btn.disabled = true; }
+
       try {
         const res = await fetch('/', {
           method: 'POST',
@@ -90,8 +101,12 @@ function oakwellInit() {
           form.reset();
           if (successEl) successEl.style.display = 'block';
           if (btn) btn.textContent = 'Sent';
-          setTimeout(() => { if (btn) { btn.textContent = originalText; btn.disabled = false; } }, 5000);
-        } else { throw new Error(); }
+          setTimeout(() => {
+            if (btn) { btn.textContent = originalText; btn.disabled = false; }
+          }, 5000);
+        } else {
+          throw new Error();
+        }
       } catch {
         if (errorEl) errorEl.classList.add('show');
         if (btn) { btn.textContent = originalText; btn.disabled = false; }
@@ -100,8 +115,5 @@ function oakwellInit() {
   });
 }
 
+// Expose globally so components.js can call it after nav injection
 window.oakwellInit = oakwellInit;
-document.addEventListener('DOMContentLoaded', () => {
-  // Only run if components already injected (i.e. components.js ran first)
-  setTimeout(oakwellInit, 50);
-});
