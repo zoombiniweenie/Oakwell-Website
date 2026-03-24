@@ -125,11 +125,11 @@ const FOOTER_HTML = `
       <div class="footer-bottom-inner">
         <div class="footer-legal">
           <p>&copy; ${new Date().getFullYear()} Oakwell Workforce Limited. Registered in England &amp; Wales. Company No. 17098259. Registered Office: Stourbridge, West Midlands, United Kingdom.</p>
-          <p style="margin-top:4px;">Employment Business &mdash; Conduct of Employment Agencies and Employment Businesses Regulations 2003. ICO Registration No. ZC107299.</p>
+          <p style="margin-top:4px;">Employment Business &mdash; Conduct of Employment Agencies and Employment Businesses Regulations 2003. ICO Registration: Pending.</p>
         </div>
         <div class="footer-credentials">
           <span class="footer-cred-badge">EL Insured</span>
-          <span class="footer-cred-badge">ICO Registered</span>
+          <span class="footer-cred-badge" style="border-color:rgba(201,162,39,0.3);color:var(--gold);">ICO Pending</span>
           <span class="footer-cred-badge">Companies House</span>
           <span class="footer-cred-badge">AWR Compliant</span>
         </div>
