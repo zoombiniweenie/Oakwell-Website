@@ -147,10 +147,15 @@ const FOOTER_HTML = `
 </div>
 `;
 
-document.addEventListener('DOMContentLoaded', () => {
-  const navEl = document.getElementById('nav-placeholder');
+document.addEventListener('DOMContentLoaded', function() {
+  var navEl = document.getElementById('nav-placeholder');
   if (navEl) navEl.innerHTML = NAV_HTML;
-  const footerEl = document.getElementById('footer-placeholder');
+  var footerEl = document.getElementById('footer-placeholder');
   if (footerEl) footerEl.innerHTML = FOOTER_HTML;
-  if (window.oakwellInit) window.oakwellInit();
+  // Small delay ensures main.js has fully parsed and oakwellInit is defined
+  setTimeout(function() {
+    if (typeof window.oakwellInit === 'function') {
+      window.oakwellInit();
+    }
+  }, 10);
 });
