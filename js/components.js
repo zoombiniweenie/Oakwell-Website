@@ -128,7 +128,10 @@ const FOOTER_HTML = `
           <p style="margin-top:4px;">Employment Business &mdash; Conduct of Employment Agencies and Employment Businesses Regulations 2003. ICO Registration No. ZC107299.</p>
         </div>
         <div class="footer-credentials">
-          <span class="footer-cred-badge">EL Insured</span>
+          <span class="footer-cred-badge">EL Insured &pound;10m</span>
+          <span class="footer-cred-badge">PL Insured &pound;5m</span>
+          <span class="footer-cred-badge">PI Insured &pound;5m</span>
+          <span class="footer-cred-badge">Cyber Insured</span>
           <span class="footer-cred-badge">ICO Registered</span>
           <span class="footer-cred-badge">Companies House</span>
           <span class="footer-cred-badge">AWR Compliant</span>
