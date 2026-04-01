@@ -6,14 +6,18 @@
 <meta name="description" content="Contact Oakwell Workforce Limited — call, WhatsApp, or email. We answer.">
 <link rel="stylesheet" href="/css/style.css">
 <style>
-.contact-method{display:flex;align-items:flex-start;gap:20px;padding:32px;background:var(--white);border:1px solid var(--grey-light);border-radius:var(--radius-lg);transition:var(--transition);text-decoration:none;}
+.contact-method{display:flex;align-items:flex-start;gap:20px;padding:28px;background:var(--white);border:1px solid var(--grey-light);border-radius:var(--radius-lg);transition:var(--transition);text-decoration:none;}
 .contact-method:hover{box-shadow:var(--shadow-lg);transform:translateY(-3px);border-color:transparent;}
-.contact-method-icon{width:56px;height:56px;border-radius:var(--radius-lg);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-.contact-method-content{flex:1;}
+.contact-method-icon{width:52px;height:52px;min-width:52px;border-radius:var(--radius-lg);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.contact-method-content{flex:1;min-width:0;}
 .contact-method-label{font-size:11px;font-weight:800;letter-spacing:0.15em;text-transform:uppercase;margin-bottom:6px;}
-.contact-method-main{font-size:20px;font-weight:800;color:var(--navy);margin-bottom:6px;line-height:1.2;}
+.contact-method-main{font-size:20px;font-weight:800;color:var(--navy);margin-bottom:6px;line-height:1.2;word-break:break-word;}
 .contact-method-sub{font-size:14px;color:var(--text-mid);line-height:1.55;}
 .contact-method-cta{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;margin-top:12px;}
+.contact-grid-top{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-bottom:20px;}
+.contact-grid-bottom{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+@media(max-width:900px){.contact-grid-bottom{grid-template-columns:1fr 1fr;}}
+@media(max-width:600px){.contact-grid-top,.contact-grid-bottom{grid-template-columns:1fr;}.contact-method{padding:20px;}.contact-method-main{font-size:16px;}}
 </style>
 </head>
 <body>
@@ -31,7 +35,7 @@
 <section style="background:var(--off-white);">
 <div class="container">
 
-  <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-bottom:20px;" class="reveal">
+  <div class="contact-grid-top reveal">
 
     <!-- CALL -->
     <a href="tel:07563491603" class="contact-method">
@@ -61,7 +65,7 @@
 
   </div>
 
-  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;" class="reveal">
+  <div class="contact-grid-bottom reveal">
 
     <!-- HIRE - CLIENTS -->
     <a href="mailto:hire@oakwellworkforce.com" class="contact-method">
