@@ -143,7 +143,23 @@
         <div class="form-group form-group--full"><label class="form-label form-label--white">Type of Work You&apos;re Looking For *</label><select class="form-select form-select--dark" name="work-type" required><option value="">Select...</option><option>Forklift Operator</option><option>Warehouse / General Operative</option><option>Production / Assembly</option><option>Machine Operator</option><option>Quality / Inspection</option><option>Team Leader / Supervisor</option><option>Multiple / Any industrial work</option></select></div>
         <div class="form-group"><label class="form-label form-label--white">Shift Preferences</label><select class="form-select form-select--dark" name="shifts"><option value="">Select...</option><option>Days only</option><option>Afternoons / lates</option><option>Nights</option><option>Any shift</option><option>Weekends welcome</option></select></div>
         <div class="form-group"><label class="form-label form-label--white">Weekly Hours Available *</label><select class="form-select form-select--dark" name="availability" id="availability" required><option value="">Select...</option><option value="fulltime">Full time &mdash; 40+ hours per week</option><option value="parttime">Part time &mdash; less than 40 hours per week</option></select></div>
-        <div class="form-group"><label class="form-label form-label--white">Year-Round Availability *</label><select class="form-select form-select--dark" name="commitment" id="commitment" required><option value="">Select...</option><option value="no-restrictions">Yes &mdash; I can commit to regular ongoing shifts throughout the year</option><option value="term-time-only">No &mdash; I am only available outside of term time</option><option value="restricted">No &mdash; my availability changes significantly month to month</option></select></div>
+        <div class="form-group form-group--full"><label class="form-label form-label--white">Year-Round Availability *</label>
+          <div style="display:flex;flex-direction:column;gap:10px;margin-top:4px;">
+            <label style="display:flex;align-items:flex-start;gap:12px;cursor:pointer;background:rgba(255,255,255,0.05);border:1px solid rgba(201,162,39,0.15);border-radius:8px;padding:14px 16px;">
+              <input type="radio" name="commitment" id="commitment" value="no-restrictions" required style="margin-top:3px;accent-color:var(--gold);flex-shrink:0;">
+              <span style="font-size:14px;color:rgba(255,255,255,0.85);line-height:1.6;"><strong style="color:var(--white);display:block;margin-bottom:2px;">Yes &mdash; I am available throughout the year</strong>I can commit to regular ongoing shifts with no term-time or seasonal restrictions.</span>
+            </label>
+            <label style="display:flex;align-items:flex-start;gap:12px;cursor:pointer;background:rgba(255,255,255,0.05);border:1px solid rgba(201,162,39,0.15);border-radius:8px;padding:14px 16px;">
+              <input type="radio" name="commitment" value="term-time-only" style="margin-top:3px;accent-color:var(--gold);flex-shrink:0;">
+              <span style="font-size:14px;color:rgba(255,255,255,0.85);line-height:1.6;"><strong style="color:var(--white);display:block;margin-bottom:2px;">No &mdash; I am only available outside of term time</strong>My availability is limited to school or university holiday periods only.</span>
+            </label>
+            <label style="display:flex;align-items:flex-start;gap:12px;cursor:pointer;background:rgba(255,255,255,0.05);border:1px solid rgba(201,162,39,0.15);border-radius:8px;padding:14px 16px;">
+              <input type="radio" name="commitment" value="restricted" style="margin-top:3px;accent-color:var(--gold);flex-shrink:0;">
+              <span style="font-size:14px;color:rgba(255,255,255,0.85);line-height:1.6;"><strong style="color:var(--white);display:block;margin-bottom:2px;">No &mdash; my availability changes significantly throughout the year</strong>I have commitments that mean I cannot guarantee consistent availability month to month.</span>
+            </label>
+          </div>
+        </div>
+        <div class="form-group"><label class="form-label form-label--white">When Can You Start?</label><select class="form-select form-select--dark" name="start-availability"><option value="">Select...</option><option value="immediate">Immediately available</option><option value="1week">Available within 1 week</option><option value="2to4weeks">Available within 2&ndash;4 weeks</option><option value="future">Looking for future opportunities</option></select></div>
         <div class="form-group form-group--full"><label class="form-label form-label--white">Relevant Licences or Qualifications</label><input class="form-input form-input--dark" type="text" name="qualifications" placeholder="e.g. Counterbalance FLT licence, CPC card, food hygiene certificate..."></div>
         <div class="form-group form-group--full"><label class="form-label form-label--white">Anything Else You&apos;d Like to Tell Us?</label><textarea class="form-textarea form-textarea--dark" name="other" placeholder="Previous experience, what you are looking for, any questions..."></textarea></div>
         <div class="form-group form-group--full"><label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer;"><input type="checkbox" name="consent" required style="margin-top:3px;accent-color:var(--gold);"><span style="font-size:13px;color:rgba(255,255,255,0.55);line-height:1.5;">I agree to Oakwell Workforce Limited processing my personal data to contact me about work opportunities, in accordance with the <a href="/pages/privacy.html" style="color:var(--gold);text-decoration:underline;">Privacy Policy</a>.</span></label></div>
@@ -162,7 +178,8 @@
 <script>
   // Silent eligibility screen — runs in capture phase before main.js fetch
   document.getElementById('worker-form').addEventListener('submit', function(e) {
-    var commitment = document.getElementById('commitment').value;
+    var commitmentEl = document.querySelector('input[name="commitment"]:checked');
+    var commitment = commitmentEl ? commitmentEl.value : '';
     if (commitment === 'term-time-only' || commitment === 'restricted') {
       e.preventDefault();
       e.stopImmediatePropagation(); // blocks main.js from sending to Formspree
