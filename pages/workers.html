@@ -139,7 +139,7 @@
         <div class="form-group"><label class="form-label form-label--white">Phone Number *</label><input class="form-input form-input--dark" type="tel" name="phone" placeholder="Best number to reach you" required></div>
         <div class="form-group form-group--full"><label class="form-label form-label--white">Email Address *</label><input class="form-input form-input--dark" type="email" name="email" placeholder="your@email.com" required></div>
         <div class="form-group"><label class="form-label form-label--white">Your Location (Town / Postcode) *</label><input class="form-input form-input--dark" type="text" name="location" placeholder="e.g. Stourbridge, DY8" required></div>
-        <div class="form-group"><label class="form-label form-label--white">Right to Work in the UK? *</label><select class="form-select form-select--dark" name="rtw" required><option value="">Select...</option><option>Yes &mdash; UK / Irish citizen</option><option>Yes &mdash; I have a visa / settled status</option><option>I&apos;m not sure &mdash; please advise me</option></select></div>
+        <div class="form-group"><label class="form-label form-label--white">Right to Work in the UK? *</label><select class="form-select form-select--dark" name="rtw" id="rtw" required><option value="">Select...</option><option value="british-irish">Yes &mdash; British / Irish Citizen</option><option value="settled-status">Yes &mdash; Settled Status / Indefinite Leave to Remain</option><option value="skilled-worker">Yes &mdash; Skilled Worker or Other Work Visa</option><option value="student-visa">Yes &mdash; Student Visa</option><option value="other-rtw">Yes &mdash; Other Right to Work</option><option value="unsure">Unsure</option><option value="no-rtw">No Right to Work</option></select></div>
         <div class="form-group form-group--full"><label class="form-label form-label--white">Type of Work You&apos;re Looking For *</label><select class="form-select form-select--dark" name="work-type" required><option value="">Select...</option><option>Forklift Operator</option><option>Warehouse / General Operative</option><option>Production / Assembly</option><option>Machine Operator</option><option>Quality / Inspection</option><option>Team Leader / Supervisor</option><option>Multiple / Any industrial work</option></select></div>
         <div class="form-group"><label class="form-label form-label--white">Shift Preferences</label><select class="form-select form-select--dark" name="shifts"><option value="">Select...</option><option>Days only</option><option>Afternoons / lates</option><option>Nights</option><option>Any shift</option><option>Weekends welcome</option></select></div>
         <div class="form-group"><label class="form-label form-label--white">Weekly Hours Available *</label><select class="form-select form-select--dark" name="availability" id="availability" required><option value="">Select...</option><option value="fulltime">Full time &mdash; 40+ hours per week</option><option value="parttime">Part time &mdash; less than 40 hours per week</option></select></div>
@@ -182,8 +182,9 @@
     var commitmentEl = document.querySelector('input[name="commitment"]:checked');
     var commitment = commitmentEl ? commitmentEl.value : '';
     var student = document.getElementById('student-status').value;
+    var rtw = document.getElementById('rtw').value;
 
-    if (commitment === 'term-time-only' || commitment === 'restricted' || student === 'student') {
+    if (commitment === 'term-time-only' || commitment === 'restricted' || student === 'student' || rtw === 'student-visa' || rtw === 'unsure' || rtw === 'no-rtw') {
       e.preventDefault();
       e.stopImmediatePropagation(); // blocks main.js from sending to Formspree
       var form = document.getElementById('worker-form');
