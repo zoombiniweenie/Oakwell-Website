@@ -160,6 +160,7 @@
           </div>
         </div>
         <div class="form-group"><label class="form-label form-label--white">When Can You Start?</label><select class="form-select form-select--dark" name="start-availability"><option value="">Select...</option><option value="immediate">Immediately available</option><option value="1week">Available within 1 week</option><option value="2to4weeks">Available within 2&ndash;4 weeks</option><option value="future">Looking for future opportunities</option></select></div>
+        <div class="form-group"><label class="form-label form-label--white">Are You Currently a Full-Time Student? *</label><select class="form-select form-select--dark" name="student-status" id="student-status" required><option value="">Select...</option><option value="not-student">No &mdash; I am not a full-time student</option><option value="student">Yes &mdash; I am a full-time student</option></select></div>
         <div class="form-group form-group--full"><label class="form-label form-label--white">Relevant Licences or Qualifications</label><input class="form-input form-input--dark" type="text" name="qualifications" placeholder="e.g. Counterbalance FLT licence, CPC card, food hygiene certificate..."></div>
         <div class="form-group form-group--full"><label class="form-label form-label--white">Anything Else You&apos;d Like to Tell Us?</label><textarea class="form-textarea form-textarea--dark" name="other" placeholder="Previous experience, what you are looking for, any questions..."></textarea></div>
         <div class="form-group form-group--full"><label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer;"><input type="checkbox" name="consent" required style="margin-top:3px;accent-color:var(--gold);"><span style="font-size:13px;color:rgba(255,255,255,0.55);line-height:1.5;">I agree to Oakwell Workforce Limited processing my personal data to contact me about work opportunities, in accordance with the <a href="/pages/privacy.html" style="color:var(--gold);text-decoration:underline;">Privacy Policy</a>.</span></label></div>
@@ -180,7 +181,9 @@
   document.getElementById('worker-form').addEventListener('submit', function(e) {
     var commitmentEl = document.querySelector('input[name="commitment"]:checked');
     var commitment = commitmentEl ? commitmentEl.value : '';
-    if (commitment === 'term-time-only' || commitment === 'restricted') {
+    var student = document.getElementById('student-status').value;
+
+    if (commitment === 'term-time-only' || commitment === 'restricted' || student === 'student') {
       e.preventDefault();
       e.stopImmediatePropagation(); // blocks main.js from sending to Formspree
       var form = document.getElementById('worker-form');
