@@ -142,31 +142,14 @@
         <div class="form-group"><label class="form-label form-label--white">Right to Work in the UK? *</label><select class="form-select form-select--dark" name="rtw" required><option value="">Select...</option><option>Yes &mdash; UK / Irish citizen</option><option>Yes &mdash; I have a visa / settled status</option><option>I&apos;m not sure &mdash; please advise me</option></select></div>
         <div class="form-group form-group--full"><label class="form-label form-label--white">Type of Work You&apos;re Looking For *</label><select class="form-select form-select--dark" name="work-type" required><option value="">Select...</option><option>Forklift Operator</option><option>Warehouse / General Operative</option><option>Production / Assembly</option><option>Machine Operator</option><option>Quality / Inspection</option><option>Team Leader / Supervisor</option><option>Multiple / Any industrial work</option></select></div>
         <div class="form-group"><label class="form-label form-label--white">Shift Preferences</label><select class="form-select form-select--dark" name="shifts"><option value="">Select...</option><option>Days only</option><option>Afternoons / lates</option><option>Nights</option><option>Any shift</option><option>Weekends welcome</option></select></div>
-        <div class="form-group"><label class="form-label form-label--white">Availability</label><select class="form-select form-select--dark" name="availability"><option value="">Select...</option><option>Immediately available</option><option>Available within 1 week</option><option>Available within 2&ndash;4 weeks</option><option>Looking for future opportunities</option></select></div>
-        <div class="form-group form-group--full">
-          <label class="form-label form-label--white">Scheduling Needs *</label>
-          <select class="form-select form-select--dark" name="scheduling" id="scheduling-select" required>
-            <option value="">Select...</option>
-            <option value="standard">I can commit to regular, consistent shifts</option>
-            <option value="flexible">My availability changes week to week (e.g. study, caring responsibilities, second job)</option>
-          </select>
-          <div id="flexible-notice" style="display:none;margin-top:16px;background:rgba(201,162,39,0.12);border:1px solid rgba(201,162,39,0.4);border-left:4px solid var(--gold);border-radius:var(--radius);padding:20px 24px;">
-            <p style="font-size:15px;font-weight:800;color:var(--gold);margin-bottom:8px;">We&rsquo;d love to work with you &mdash; but let&rsquo;s have a proper conversation first.</p>
-            <p style="font-size:14px;color:rgba(255,255,255,0.75);line-height:1.65;margin-bottom:14px;">Variable-availability workers are really important to us, but placing you well takes a bit more than a standard form. We want to understand your pattern before we try to match you to shifts &mdash; otherwise we risk setting you up to fail.</p>
-            <p style="font-size:14px;color:rgba(255,255,255,0.75);line-height:1.65;margin-bottom:18px;">Drop us a short email &mdash; tell us roughly when you <em>can</em> work and what you are looking for. We will come back to you quickly.</p>
-            <a href="mailto:join@oakwellworkforce.com?subject=Flexible%20Availability%20%E2%80%94%20Register%20Interest&body=Hi%20Oakwell%2C%0A%0AI%27d%20like%20to%20register%20my%20interest%20but%20my%20availability%20changes%20week%20to%20week.%0A%0AHere%27s%20a%20bit%20about%20my%20schedule%3A%0A%0A" style="display:flex;align-items:center;justify-content:center;gap:8px;background:var(--gold);color:var(--navy);font-family:'Bebas Neue',sans-serif;font-size:15px;letter-spacing:0.06em;padding:12px 24px;border-radius:var(--radius);text-decoration:none;font-weight:700;word-break:break-word;box-sizing:border-box;">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
-              Email join@oakwellworkforce.com
-            </a>
-            <p style="font-size:12px;color:rgba(255,255,255,0.35);margin-top:12px;">You can also reach us on <a href="tel:07563491603" style="color:var(--gold);">07563 491603</a> or <a href="https://wa.me/447563491603" style="color:#25D366;">WhatsApp</a>.</p>
-          </div>
-        </div>
+        <div class="form-group"><label class="form-label form-label--white">Weekly Hours Available *</label><select class="form-select form-select--dark" name="availability" id="availability" required><option value="">Select...</option><option value="fulltime">Full time &mdash; 40+ hours per week</option><option value="parttime">Part time &mdash; less than 40 hours per week</option></select></div>
+        <div class="form-group"><label class="form-label form-label--white">Year-Round Availability *</label><select class="form-select form-select--dark" name="commitment" id="commitment" required><option value="">Select...</option><option value="no-restrictions">Yes &mdash; I can commit to regular ongoing shifts throughout the year</option><option value="term-time-only">No &mdash; I am only available outside of term time</option><option value="restricted">No &mdash; my availability changes significantly month to month</option></select></div>
         <div class="form-group form-group--full"><label class="form-label form-label--white">Relevant Licences or Qualifications</label><input class="form-input form-input--dark" type="text" name="qualifications" placeholder="e.g. Counterbalance FLT licence, CPC card, food hygiene certificate..."></div>
         <div class="form-group form-group--full"><label class="form-label form-label--white">Anything Else You&apos;d Like to Tell Us?</label><textarea class="form-textarea form-textarea--dark" name="other" placeholder="Previous experience, what you are looking for, any questions..."></textarea></div>
         <div class="form-group form-group--full"><label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer;"><input type="checkbox" name="consent" required style="margin-top:3px;accent-color:var(--gold);"><span style="font-size:13px;color:rgba(255,255,255,0.55);line-height:1.5;">I agree to Oakwell Workforce Limited processing my personal data to contact me about work opportunities, in accordance with the <a href="/pages/privacy.html" style="color:var(--gold);text-decoration:underline;">Privacy Policy</a>.</span></label></div>
       </div>
       <div style="margin-top:28px;"><button type="submit" class="btn btn--gold btn--lg" style="width:100%;justify-content:center;">Register My Interest</button></div>
-      <div class="form-success"><p>Registered &mdash; we will be in touch within one working day.</p></div>
+      <div class="form-success"><p>Thank you &mdash; your submission has been received.</p></div>
       <div class="alert alert--error">Something went wrong. Please call us on 07563 491603 or email join@oakwellworkforce.com.</div>
       <p style="text-align:center;margin-top:16px;font-size:13px;color:rgba(255,255,255,0.4);">Or contact us directly: <a href="tel:07563491603" style="color:var(--gold);font-weight:700;">07563 491603</a> &nbsp;&middot;&nbsp; <a href="mailto:join@oakwellworkforce.com" style="color:var(--gold);font-weight:700;">join@oakwellworkforce.com</a> &nbsp;&middot;&nbsp; <a href="https://wa.me/447563491603" target="_blank" rel="noopener" style="color:#25D366;font-weight:700;">WhatsApp</a></p>
     </form>
@@ -176,35 +159,22 @@
 
 <div id="footer-placeholder"></div>
 <script src="/js/components.js"></script>
-<script src="/js/main.js"></script>
 <script>
-(function(){
-  var sel = document.getElementById('scheduling-select');
-  var notice = document.getElementById('flexible-notice');
-  var form = document.getElementById('worker-form');
-  var submitBtn = form ? form.querySelector('button[type="submit"]') : null;
-
-  function updateSchedulingUI(){
-    var isFlexible = sel.value === 'flexible';
-    notice.style.display = isFlexible ? 'block' : 'none';
-    if(submitBtn){
-      submitBtn.disabled = isFlexible;
-      submitBtn.style.opacity = isFlexible ? '0.35' : '';
-      submitBtn.style.cursor = isFlexible ? 'not-allowed' : '';
+  // Silent eligibility screen — runs in capture phase before main.js fetch
+  document.getElementById('worker-form').addEventListener('submit', function(e) {
+    var commitment = document.getElementById('commitment').value;
+    if (commitment === 'term-time-only' || commitment === 'restricted') {
+      e.preventDefault();
+      e.stopImmediatePropagation(); // blocks main.js from sending to Formspree
+      var form = document.getElementById('worker-form');
+      var btn = form.querySelector('[type=submit]');
+      var successEl = form.querySelector('.form-success');
+      if (btn) { btn.textContent = 'Sent'; btn.disabled = true; }
+      if (successEl) successEl.style.display = 'block';
+      window.scrollTo({ top: successEl.getBoundingClientRect().top + window.scrollY - 100, behavior: 'smooth' });
     }
-  }
-
-  if(sel){ sel.addEventListener('change', updateSchedulingUI); }
-
-  if(form){
-    form.addEventListener('submit', function(e){
-      if(sel && sel.value === 'flexible'){
-        e.preventDefault();
-        notice.scrollIntoView({behavior:'smooth', block:'center'});
-      }
-    });
-  }
-})();
+  }, true); // true = capture phase, fires before main.js bubble listener
 </script>
+<script src="/js/main.js"></script>
 </body>
 </html>
